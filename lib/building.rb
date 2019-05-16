@@ -10,8 +10,8 @@ class Building
   end
 
   def average_rent
-    total_rent = @units.inject(0) { |tot,unit| tot + unit.monthly_rent }
-    total_rent.to_f / @units.length
+    total_rent = @units.sum { |unit| unit.monthly_rent }
+    (total_rent.to_f / @units.length).round(1)
   end
 
   def renter_with_highest_rent
